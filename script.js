@@ -1,10 +1,10 @@
-var result = [];
 var firstEnter = true;
 
 function decoding(e) {
-  var startCode = document.getElementById('code').value;
-  var arr = startCode.split('');
-  if (firstEnter) { //чекать первое и последующее вхождение
+  var res = '';
+  if (firstEnter) {
+    var startCode = document.getElementById('code').value;
+    var arr = startCode.split('');
     for (var i = 0; i < arr.length; i++) {
       if (arr[i] === arr[i + 1]) {
         arr.splice(i, 2);
@@ -13,14 +13,16 @@ function decoding(e) {
     }
     firstEnter = false;
   } else {
+    var startCode = document.getElementById('code').value;
+    var arr = startCode.split('');
     for (var i = 0; i < arr.length; i++) {
       if (arr[i] === arr[i + 1]) {
         arr.splice(i, 2);
+        i = 0;
       }
     }
-
   }
-  var res = arr.join('');
+  res = arr.join('');
   document.getElementById('result').innerHTML = res;
 }
 
